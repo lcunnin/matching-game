@@ -1,0 +1,116 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+.game-name {
+  font-family: "Amatic SC", sans-serif;
+  text-align: center;
+  font-size: 2em;
+  color: #14213d;
+  margin-bottom: 30px;
+}
+
+h1,
+p {
+  margin: 10px;
+}
+
+body {
+  background: #d0e0e6;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+
+.new-game-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 20px 0 10px 0;
+  border: 0.2em solid rgba(255, 255, 255, 0.1);
+  border-radius: 2em;
+  box-sizing: border-box;
+  font-weight: 300;
+  font-size: 0.75em;
+  color: #f08903;
+  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.5);
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s ease all;
+}
+
+.new-game-button:hover {
+  border-color: rgba(255, 255, 255, 2.5);
+}
+
+.card-layout {
+  display: grid;
+  grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+  gap: 10px;
+}
+
+.animal-card {
+  height: 200px;
+  width: 150px;
+  border-radius: 2px;
+  background: none;
+  cursor: pointer;
+  border: none;
+}
+
+.animal-card.flipped .inside-card {
+  transform: rotateY(180deg);
+}
+
+.inside-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: 0.3s cubic-bezier(0.3, 0.02, 0.05, 1) all;
+}
+
+.animal-card .frontside,
+.backside {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.animal-card .frontside {
+  transform: rotateY(180deg);
+}
+
+.animal-card .backside {
+  background: #efb366;
+  background-image: linear-gradient(
+    45deg,
+    #e9c46a 25%,
+    transparent 25%,
+    transparent 50%,
+    #e9c46a 50%,
+    #e9c46a 75%,
+    transparent 25%,
+    transparent
+  );
+  transition: 0.3s ease all;
+}
+
+.animal-card .backside:hover {
+  background: #e7ca80;
+}

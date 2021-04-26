@@ -1,0 +1,57 @@
+.animal-card {
+    height: 200px;
+    width: 150px;
+    border-radius: 2px;
+    background: none;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .animal-card.flipped .inside-card {
+    transform: rotateY(180deg);
+  }
+  
+  .inside-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: 0.3s cubic-bezier(0.3, 0.02, 0.05, 1) all;
+  }
+  
+  .animal-card .frontside,
+  .backside {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+    overflow: hidden;
+  }
+  
+  .animal-card .frontside {
+    transform: rotateY(180deg);
+  }
+  
+  .animal-card .backside {
+    background: #efb366;
+    background-image: linear-gradient(
+      45deg,
+      #e9c46a 25%,
+      transparent 25%,
+      transparent 50%,
+      #e9c46a 50%,
+      #e9c46a 75%,
+      transparent 25%,
+      transparent
+    );
+    transition: 0.3s ease all;
+  }
+  
+  .animal-card .backside:hover {
+    background: #e7ca80;
+  }
+  
