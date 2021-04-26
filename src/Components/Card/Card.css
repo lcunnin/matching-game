@@ -1,6 +1,12 @@
-.animal-card {
-    height: 200px;
-    width: 150px;
+  .card-layout {
+    display: grid;
+    grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+    gap: 10px;
+  }
+  
+  .animal-card {
+    height: 300px;
+    width: 200px;
     border-radius: 2px;
     background: none;
     cursor: pointer;
@@ -54,4 +60,17 @@
   .animal-card .backside:hover {
     background: #e7ca80;
   }
+
+  @media screen and (min-width: 481px) and (max-width: 768px) { 
+  .card-layout {
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+    gap: 20px;
+  }}
   
+  @media only screen and (min-width: 768px) and (max-width: 980px) {
+    .card-layout {
+      display: grid;
+      grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+      gap: 20px;
+    }}

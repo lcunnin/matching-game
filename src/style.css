@@ -34,7 +34,7 @@ body {
 
 .new-game-button {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 20px 20px;
   margin: 20px 0 10px 0;
   border: 0.2em solid rgba(255, 255, 255, 0.1);
   border-radius: 2em;
@@ -59,8 +59,8 @@ body {
 }
 
 .animal-card {
-  height: 200px;
-  width: 150px;
+  height: 300px;
+  width: 200px;
   border-radius: 2px;
   background: none;
   cursor: pointer;

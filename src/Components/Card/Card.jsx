@@ -14,8 +14,8 @@ export default function Card(props) {
           <img
             src={`${url}/${props.animal.id}.png`}
             alt="animal"
-            height="200"
-            width="150"
+            height="300"
+            width="200"
           />
         </div>
         <div className="backside" />
