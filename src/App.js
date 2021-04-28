@@ -2,11 +2,41 @@ import React, { useEffect, useState } from "react";
 import "./style.css";
 import Card from "./Components/Card/Card";
 
-export default function App() {
-  const [animalPairs, setAnimalPairs] = useState([
+/*https://stackoverflow.com/questions/49555273/how-to-shuffle-an-array-of-objects-in-javascript*/
+
+function shuffleCardArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    let temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+  return array;
+}
+
+function initialState() {
+  return shuffleCardArray([
     {
-      id: "oU6KZTXhuvk",
-      name: "champdog",
+      id: "NqVbo0ocJ2k",
+      name: "cow",
+      isFlipped: false,
+      isMatched: false
+    },
+    {
+      id: "E32fGlISSBk",
+      name: "frog",
+      isFlipped: false,
+      isMatched: false
+    },
+    {
+      id: "NR2eMg9zXxA",
+      name: "fluffydog",
+      isFlipped: false,
+      isMatched: false
+    },
+    {
+      id: "V7SKRhXskv8",
+      name: "fish",
       isFlipped: false,
       isMatched: false
     },
@@ -16,28 +46,10 @@ export default function App() {
       isFlipped: false,
       isMatched: false
     },
+    { id: "ByAKvjBH1ZY", name: "turtle", isFlipped: false, isMatched: false },
     {
-      id: "OzAeZPNsLXk",
-      name: "justacat",
-      isFlipped: false,
-      isMatched: false
-    },
-    {
-      id: "bYXP-ITv4_s",
-      name: "hoodiedog",
-      isFlipped: false,
-      isMatched: false
-    },
-    {
-      id: "fEAvhbvZX40",
-      name: "partyhat",
-      isFlipped: false,
-      isMatched: false
-    },
-    { id: "Qb7D1xw28Co", name: "pjdog", isFlipped: false, isMatched: false },
-    {
-      id: "pOUA8Xay514",
-      name: "sweaterdog",
+      id: "c9mZYrCmvRo",
+      name: "parrot",
       isFlipped: false,
       isMatched: false
     },
@@ -48,8 +60,26 @@ export default function App() {
       isMatched: false
     },
     {
-      id: "oU6KZTXhuvk",
-      name: "champdog",
+      id: "NqVbo0ocJ2k",
+      name: "cow",
+      isFlipped: false,
+      isMatched: false
+    },
+    {
+      id: "E32fGlISSBk",
+      name: "frog",
+      isFlipped: false,
+      isMatched: false
+    },
+    {
+      id: "NR2eMg9zXxA",
+      name: "fluffydog",
+      isFlipped: false,
+      isMatched: false
+    },
+    {
+      id: "V7SKRhXskv8",
+      name: "fish",
       isFlipped: false,
       isMatched: false
     },
@@ -59,28 +89,10 @@ export default function App() {
       isFlipped: false,
       isMatched: false
     },
+    { id: "ByAKvjBH1ZY", name: "turtle", isFlipped: false, isMatched: false },
     {
-      id: "OzAeZPNsLXk",
-      name: "justacat",
-      isFlipped: false,
-      isMatched: false
-    },
-    {
-      id: "bYXP-ITv4_s",
-      name: "hoodiedog",
-      isFlipped: false,
-      isMatched: false
-    },
-    {
-      id: "fEAvhbvZX40",
-      name: "partyhat",
-      isFlipped: false,
-      isMatched: false
-    },
-    { id: "Qb7D1xw28Co", name: "pjdog", isFlipped: false, isMatched: false },
-    {
-      id: "pOUA8Xay514",
-      name: "sweaterdog",
+      id: "c9mZYrCmvRo",
+      name: "parrot",
       isFlipped: false,
       isMatched: false
     },
@@ -91,34 +103,25 @@ export default function App() {
       isMatched: false
     }
   ]);
+}
 
-  function shuffleCards(array) {
-    const length = animalPairs.length;
-    for (let i = length; i > 0; i--) {
-      const randomIndex = Math.floor(Math.random() * i);
-      const currentIndex = i - 1;
-      const temp = animalPairs[currentIndex];
-      animalPairs[currentIndex] = animalPairs[randomIndex];
-      animalPairs[randomIndex] = temp;
-    }
-    return array;
-  }
-
-  const [firstFaceUp, setFirstFaceUp] = useState(null);
-  const [secondFaceUp, setSecondFaceUp] = useState(null);
+export default function App() {
+  const [animalPairs, setAnimalPairs] = useState(initialState());
+  const [firstFaceUp, setFirstFaceUp] = useState(false);
+  const [secondFaceUp, setSecondFaceUp] = useState(false);
 
   function flipCard(index) {
-    if (animalPairs[index].isFlipped || secondFaceUp !== null) return;
+    if (animalPairs[index].isFlipped || secondFaceUp !== false) return;
 
     let newAnimalPairs = [...animalPairs];
     newAnimalPairs[index].isFlipped = true;
 
-    if (firstFaceUp !== null) {
+    if (firstFaceUp !== false) {
       if (newAnimalPairs[index].id === newAnimalPairs[firstFaceUp].id) {
         newAnimalPairs[index].isMatched = true;
         newAnimalPairs[firstFaceUp].isMatched = true;
         setAnimalPairs(newAnimalPairs);
-        setFirstFaceUp(null);
+        setFirstFaceUp(false);
         return;
       } else {
         setAnimalPairs(newAnimalPairs);
@@ -131,7 +134,7 @@ export default function App() {
   }
 
   useEffect(() => {
-    if (secondFaceUp === null) return;
+    if (secondFaceUp === false) return;
     setTimeout(() => {
       setAnimalPairs((animalPairs) =>
         animalPairs.map((animal) => {
@@ -143,14 +146,13 @@ export default function App() {
           };
         })
       );
-      setFirstFaceUp(null);
-      setSecondFaceUp(null);
+      setFirstFaceUp(false);
+      setSecondFaceUp(false);
     }, 1000);
   }, [secondFaceUp]);
 
-  const handleRestart = () => {
-    setAnimalPairs([false]);
-    shuffleCards();
+  const handleNewGame = () => {
+    setAnimalPairs(initialState());
   };
 
   return (
@@ -158,7 +160,7 @@ export default function App() {
       <div className="game-name">
         <h1>Matching Game</h1>
         <p>Flip the card to match the animal pictures!</p>
-        <button className="new-game-button" onClick={handleRestart}>
+        <button className="new-game-button" onClick={handleNewGame}>
           New Game
         </button>
       </div>
