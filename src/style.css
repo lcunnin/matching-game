@@ -13,15 +13,20 @@ html {
 }
 
 .game-name {
-  font-family: "Amatic SC", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   text-align: center;
-  font-size: 2em;
   color: #14213d;
   margin-bottom: 30px;
 }
 
-h1,
+h1 {
+  font-family: "Neucha", sans-serif;
+  font-size: 5rem;
+  margin: 10px;
+}
+
 p {
+  font-size: 1.7rem;
   margin: 10px;
 }
 
@@ -45,7 +50,7 @@ body {
   border-radius: 2em;
   box-sizing: border-box;
   font-weight: 300;
-  font-size: 1em;
+  font-size: 1.3rem;
   color: #ffffff;
   text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.5);
   text-align: center;
