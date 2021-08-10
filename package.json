@@ -1,6 +1,6 @@
 {
-  "name": "projectthree",
-  "homepage": "https://lcunnin.github.io/projectthree",
+  "name": "matching-game",
+  "homepage": "https://lcunnin.github.io/matching-game",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
